@@ -38,7 +38,7 @@ public class Hooks{
             }
             String browser = property.getProperty("browser");
             if(browser.equalsIgnoreCase("firefox")){
-                System.setProperty("webdriver.ie.driver",property.getProperty("geckoDriver"));
+                System.setProperty("webdriver.gecko.driver",property.getProperty("geckoDriver"));
                 driver = new FirefoxDriver();
             } else if(browser.equalsIgnoreCase("IE")){
                 System.setProperty("webdriver.ie.driver",property.getProperty("ieDriver"));
