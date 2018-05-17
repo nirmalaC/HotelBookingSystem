@@ -4,34 +4,43 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Given;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import static pageobjects.BookingHomePage.enterFirstName;
-
+import org.openqa.selenium.support.PageFactory;
+import pageobjects.BookingHomePage;
 
 public class StepDefinitions {
-    public WebDriver driver;
 
-    public StepDefinitions()
-    {
-    	driver = Hooks.driver;
-    }
+    BookingHomePage page = PageFactory.initElements(BookingHomePage.driver, BookingHomePage.class);
 
-    @Given("^I enter vaild details : (.*), (.*), (.*), (.*)$")
-    public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, Boolean deposit ) throws Throwable {
-//        driver.findElement(By.cssSelector("input[id=firstname]")).sendKeys(surename);
-
-        enterFirstName(firstname,surename, bookingprice, deposit);
+    @Given("^I enter vaild details : (.*), (.*), (.*), (.*), (.*), (.*)$")
+    public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate ) throws Throwable {
+        page.enterDetails(firstname,surename, bookingprice, deposit, checinDate, checkoutDate);
     }
 
     @When("^I click on the save button$")
     public void iClickOnTheSaveButton() throws Throwable {
-
+        page.save_button.click();
     }
 
-    @Then("^I should be able to make$")
-    public void iShouldBeAbleToMake() throws Throwable {
+    @Then("^I should be able to save the booking : (.*), (.*)$")
+    public void iShouldBeAbleToMake(String firstname, String surename) throws Throwable {
+        page.checkDetailsDisplayed(firstname);
+        page.checkDetailsDisplayed(surename);
+    }
 
+    @Given("^vaild booking exists (.*), (.*)$")
+    public void vaildBookingExistsFirstnameSurename(String firstname, String surename) {
+        page.checkDetailsDisplayed(firstname);
+        page.checkDetailsDisplayed(surename);
+    }
+
+    @When("^I click on the delete button$")
+    public void iClickOnTheDeleteButton(){
+        page.delete_button.click();
+    }
+
+    @Then("^the saved bookings should be deleted : (.*), (.*)$")
+    public void theSavedBookingsShouldBeDeletedFirstnameSurename(String firstname, String surename) {
+        page.checkDetailsAreDeleted(firstname);
+        page.checkDetailsAreDeleted(surename);
     }
 }

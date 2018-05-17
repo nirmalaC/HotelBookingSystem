@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-
+import lombok.Getter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class Hooks{
+
+    @Getter
     public static WebDriver driver;
 
     private static Logger Log = Logger.getLogger(Hooks.class.getName());//
