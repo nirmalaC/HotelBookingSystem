@@ -14,6 +14,7 @@ Tools And Environment :
 4. Enable cucumber-java plugin in IntelliJ
 5. Git
 6. Required drivers (Chrome, FireFox and InternetExplorar)
+7.Windows 64bit
 
 
 Test Architecture :
