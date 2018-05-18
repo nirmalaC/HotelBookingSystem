@@ -27,7 +27,7 @@ Test Architecture :
 		|	|	|BookingHomePage
 		|	|	|Helpers
 		|       |stepDefinitions
-       	        |	|	|Hooks
+       	        	|	|Hooks
         	|	|	|StepDefinitions
         	|	|	|TestRunner
 		|src/test/resources
