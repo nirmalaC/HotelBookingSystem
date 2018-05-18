@@ -2,9 +2,8 @@ Cucumber-PageFactory-Maven
 =================
 I have used selenium-cucumber-Maven with PageFactory Design Pattern.
 
-selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
-Page Factory is an inbuilt Page Object Model concept for Selenium WebDriver but it is very optimized.
-Here we follow the concept of separation of Page Object Repository and Test Methods. Additionally, with the help of PageFactory class, we use annotations @FindBy to find WebElement. We use initElements method to initialize web elements.
+-selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
+-Page Factory is an inbuilt Page Object Model concept for Selenium WebDriver but it is very optimized.Here we follow the concept of separation of Page Object Repository and Test Methods. Additionally, with the help of PageFactory class, we use annotations @FindBy to find WebElement. We use initElements method to initialize web elements.
 
 Tools And Environment :
 -----------------------
