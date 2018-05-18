@@ -16,11 +16,11 @@ Feature : Hotel Booking System
   When I clciked Save button
   Then the booking should be saved
   And success message is displayed
-  And saved booking should be displayed
+  And saved booking should be displayed : <first_name>, <sure_name>, <price>, <deposit>
   Examples:
-  | first_name | sure_name | price |deposit |
-  | Jack       | Jones     | 500   | true   |
-  | JImmy      | Bill      | 460   | false  |
+  | first_name | sure_name | price |deposit | checkin_date | checkout_date  |
+  | Jack       | Jones     | 500   | true   |  20          |  25            |
+  | JImmy      | Bill      | 460   | false  |  25          |  28            |
 
 
   2. Scenario Outline:  User successfully deletes a saved booking reference
