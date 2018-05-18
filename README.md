@@ -12,7 +12,7 @@ Tools And Environment :
 3. Maven
 4. Enable cucumber-java plugin in IntelliJ
 5. Git
-6. Required drivers (Chrome, FireFox and InternetExplorar)
+6. Required drivers (Chrome, FireFox and InternetExplorer)
 7. Windows 64bit
 
 Configure JAVA_HOME and MAVEN_HOM in the Environmental Variables : Follow the setup instructions specified in here https://www.mkyong.com/maven/how-to-install-maven-in-windows/  
