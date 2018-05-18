@@ -1,14 +1,20 @@
 Selenium-Cucumber-PageFactory-Java-Maven
 =================
-I have used
-selenium-cucumber : Automation Testing Using Java
+I have used selenium-cucumber-Maven with PageFactory Design Pattern.
 
 selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
-It enables you to write and execute automated acceptance/unit tests.
-It is cross-platform, open source and free.
-Automate your test cases with minimal coding.
+Page Factory is an inbuilt Page Object Model concept for Selenium WebDriver but it is very optimized.
+Here we follow the concept of separation of Page Object Repository and Test Methods. Additionally, with the help of PageFactory class, we use annotations @FindBy to find WebElement. We use initElements method to initialize web elements.
 
-Automation Test Architecture
+Tools and Environment:
+1.IntelliJ IDEA 2016
+2.Java
+3.Maven
+4.Enable cucumber-java plugin in IntelliJ
+5.Git
+8.Required drivers (Chrome, firefox, ie...)
+
+Test Architecture
 --------------
 	HotelBookingSystem
 		|_src/main/
@@ -25,23 +31,32 @@ Automation Test Architecture
 		|	|	|hotelBooking.feature
 		|	|Config.Properties
 
-* **src/test/resources/features** - all the cucumber features files (files .feature ext) goes here.
-* **src/test/java/stepDefinitions/StepDefinitions - you can define step defintion .
-* **src/test/java/env** - this package contains cucumber runner (RunCukeTest.java) where you can configure your glue code location (step defintions), define test result output format.(html, json, xml). Hooks where you can configure all before and after test settings Hooks.java, DriverUtil.java contains code for intializing driver instances for respective driver.
-* **src/main/java/platformConfigs** - If you want to run your test on saucelab and browserstack platforms, you need to add its configuration such as username, access key here.
-* **src/main/java/browserConfig** - When you run your test on remote browser/platform you have to provide capabilities and platform information here.
-* **src/main/java/appUnderTest** - If you are testing mobile based application you can keep your app build here.
+- HotelBookingSystem/Drivers - All the required drivers to run the tests are specified here.
 
-Writing a test
---------------
+- src/test/java/resources/features** - all the cucumber features files (files .feature ext) goes here.
+- src/test/java/resources/Config.properties - All the required configuration properties are defined here (e.g : website url, browsers).
+
+-src/test/javapageobjects/BookingHomePage - This is the PageFactory all the webelemnets are initialized here.
+-src/test/javapageobjects/helper - All the required helpers like webdriver wait are defined here.
+
+- src/test/java/stepDefinitions/StepDefinitions - All the step definitions are implemented here.
+- src/test/java/stepDefinitions/Hooks - All the step definitions are implemented here.
+- src/test/java/stepDefinitions/TestRunner - This is the cucumber test runner file used to run tests.
+
+Writing a test :
+----------------
 The cucumber features goes in the `Features` library and should have the ".feature" extension. The
 
-
-Running test
+Running test :
 --------------
-
 You can run the test by using test runner file:
 - Go to TestRunner file and click run button
 
 OR Go to your project directory from terminal and hit following commands
-- mvn test "-Dbrowser=chrome" (to use any other browser)
+- mvn test (to use any other browser)
+
+Cucumber Reports :
+------------------
+
+Once the tests are executed through the TestRunner Class the reporst are generated in HTML format inside target/cucumber-Html-Report.
+Right click on the index.html file and select open in browser, we can view the cucumber reports in web browser.
