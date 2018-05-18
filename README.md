@@ -55,7 +55,9 @@ Running test :
 --------------
 You can run the test by using test runner file:
 - Go to TestRunner file and click run button
+
 OR 
+
 Go to your project directory from terminal and hit following commands
 - mvn test 
 
