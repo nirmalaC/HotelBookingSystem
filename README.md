@@ -65,3 +65,7 @@ Cucumber Reports :
 
 Once the tests are executed through the TestRunner Class the reporst are generated in HTML format inside target/cucumber-Html-Report.
 Right click on the index.html file and select open in browser, we can view the cucumber reports in web browser.
+
+Note : 
+-----
+You need to have all the specified required environment setup to run the tests.
