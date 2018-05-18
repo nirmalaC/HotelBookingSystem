@@ -27,9 +27,9 @@ Test Architecture :
 		|	|	|BookingHomePage
 		|	|	|Helpers
 		|       |stepDefinitions
-       	|	|Hooks
-        	|	|StepDefinitions
-        	|	|TestRunner
+       	        |	|	|Hooks
+        	|	|	|StepDefinitions
+        	|	|	|TestRunner
 		|src/test/resources
 		|	|Features
 		|	|	|hotelBooking.feature
