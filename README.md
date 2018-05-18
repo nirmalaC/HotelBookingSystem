@@ -26,7 +26,7 @@ Test Architecture :
 		|	|pageobjects
 		|	|	|BookingHomePage
 		|	|	|Helpers
-		|   |stepDefinitions
+		|       |stepDefinitions
        		|	|Hooks
         	|	|StepDefinitions
         	|	|TestRunner
