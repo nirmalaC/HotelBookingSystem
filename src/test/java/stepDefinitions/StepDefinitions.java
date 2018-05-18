@@ -11,8 +11,17 @@ public class StepDefinitions {
 
     BookingHomePage page = PageFactory.initElements(BookingHomePage.driver, BookingHomePage.class);
 
+    /**
+     *
+     * @param firstname The firstname parameter is the text to enter in the firstname textbox while saving booking
+     * @param surename The surename parameter is the text to enter in the surename textbox while saving booking
+     * @param bookingprice The bookingprice parameter is the text to enter in the price textbox while saving booking
+     * @param deposit The deposit parameter is to set value in deposit dropdown while saving booking
+     * @param checinDate The firstname parameter is the text to enter in the firstname textbox while saving booking
+     * @param checkoutDate The checkoutDateis a parameter to set date in textbox datepicker while saving booking
+     */
     @Given("^I enter vaild details : (.*), (.*), (.*), (.*), (.*), (.*)$")
-    public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate ) throws Throwable {
+    public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate ) {
         page.enterDetails(firstname,surename, bookingprice, deposit, checinDate, checkoutDate);
     }
 
@@ -21,26 +30,23 @@ public class StepDefinitions {
         page.save_button.click();
     }
 
-    @Then("^I should be able to save the booking : (.*), (.*)$")
-    public void iShouldBeAbleToMake(String firstname, String surename) throws Throwable {
+    @Then("^I should be able to save the booking : (.*)$")
+    public void iShouldBeAbleToMake(String firstname) throws Throwable {
         page.checkDetailsDisplayed(firstname);
-        page.checkDetailsDisplayed(surename);
     }
 
-    @Given("^vaild booking exists (.*), (.*)$")
-    public void vaildBookingExistsFirstnameSurename(String firstname, String surename) {
+    @Given("^vaild booking exists : (.*)$")
+    public void vaildBookingExistsFirstnameSurename(String firstname) {
         page.checkDetailsDisplayed(firstname);
-        page.checkDetailsDisplayed(surename);
     }
 
-    @When("^I click on the delete button$")
-    public void iClickOnTheDeleteButton(){
-        page.delete_button.click();
+    @When("^I click on the delete button : (.*)$")
+    public void iClickOnTheDeleteButton(String firstname){
+        page.clickDeleteButton(firstname);
     }
 
-    @Then("^the saved bookings should be deleted : (.*), (.*)$")
-    public void theSavedBookingsShouldBeDeletedFirstnameSurename(String firstname, String surename) {
+    @Then("^the saved bookings should be deleted : (.*)$")
+    public void theSavedBookingsShouldBeDeletedFirstnameSurename(String firstname) {
         page.checkDetailsAreDeleted(firstname);
-        page.checkDetailsAreDeleted(surename);
     }
 }

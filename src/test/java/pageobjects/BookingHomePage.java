@@ -1,5 +1,6 @@
 package pageobjects;
 
+import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,10 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import stepDefinitions.Hooks;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class BookingHomePage extends Hooks{
@@ -50,22 +55,22 @@ public class BookingHomePage extends Hooks{
 
 	@FindBy(how= How.CSS, using="a[data-handler='next']")
 	public static WebElement datepicker_next;
-//
-//	@FindBy(xpath ="//div[@id='bookings']/div[@class='row']/div/p[contains(text(),'"+ textDisplayed +"')]")
-//	public static WebElement text_displayed;
 
-
-
-
-
+	/**
+	 *
+	 * @param bookingDeposit value used to select the deposit value form the dropdown field
+	 */
 	public void enterDeposit(String bookingDeposit){
 		Select dropDown = new Select(deposit);
 		dropDown.selectByVisibleText(bookingDeposit);
 	}
 
-	public void checkInDate(String checkinDate) throws InterruptedException {
+	/**
+	 *
+	 * @param checkinDate string value used to select the checkinDate form the datepicker
+	 */
+	public void checkInDate(String checkinDate) {
 		check_in.click();
-		List<WebElement> rows = datepicker_table.findElements(By.tagName("tr"));
 		List<WebElement> columns = datepicker_table.findElements(By.tagName("td"));
 
 			for(WebElement cell : columns) {
@@ -74,10 +79,13 @@ public class BookingHomePage extends Hooks{
 				cell.findElement(By.linkText(checkinDate)).click();
 				break;
 			}}
-		Thread.sleep(1000);
 	}
 
-	public void checkOutDate(String checkoutDate) throws InterruptedException {
+	/**
+	 *
+	 * @param checkoutDate string value used to select the checkoutDate form the datepicker
+	 */
+	public void checkOutDate(String checkoutDate) {
        check_out.click();
 		List<WebElement> rows = datepicker_table.findElements(By.tagName("tr"));
 		List<WebElement> columns = datepicker_table.findElements(By.tagName("td"));
@@ -88,33 +96,59 @@ public class BookingHomePage extends Hooks{
 				cell.findElement(By.linkText(checkoutDate)).click();
 				break;
 			}}
-		Thread.sleep(1000);
 	}
 
-	public void enterDetails(String firstname, String surename, String bookingPrice, String deposit, String checkinDate, String checkoutDate) throws InterruptedException {
+	/**
+	 *
+	 * @param firstname The firstname parameter is the text to enter in the firstname textbox while saving booking
+	 * @param surename The surename parameter is the text to enter in the surename textbox while saving booking
+	 * @param bookingPrice The bookingprice parameter is the text to enter in the price textbox while saving booking
+	 * @param deposit The deposit parameter is to set value in deposit dropdown while saving booking
+	 * @param checkinDate The firstname parameter is the text to enter in the firstname textbox while saving booking
+	 * @param checkoutDate The checkoutDateis a parameter to set date in textbox datepicker while saving booking
+	 */
+	public void enterDetails(String firstname, String surename, String bookingPrice, String deposit, String checkinDate, String checkoutDate) {
 		first_name.sendKeys(firstname);
-		Thread.sleep(1000);
 		sure_name.sendKeys(surename);
-		Thread.sleep(1000);
 		price.sendKeys(bookingPrice);
-		Thread.sleep(1000);
 		enterDeposit(deposit);
-		Thread.sleep(1000);
 		checkInDate(checkinDate);
-		Thread.sleep(1000);
 		checkOutDate(checkoutDate);
-		Thread.sleep(1000);
 	}
 
+	/**
+	 *
+	 * @param textDisplayed This is the text by which we get the entire saved row assert the row after saving the details
+	 */
 	public void checkDetailsDisplayed(String textDisplayed){
-		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textDisplayed +"']"));
+		driver.navigate().refresh();
+		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textDisplayed +"']/ancestor::div[@class='row']"));
 		Assert.assertTrue(element.isDisplayed());
 	}
 
+	/**
+	 *
+	 * @param textDisplayed this is the text that has to be verified that it is not present on the page
+	 */
 	public void checkDetailsAreDeleted(String textDisplayed){
-		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textDisplayed +"']"));
-		Assert.assertFalse(element.isDisplayed());
+		List<WebElement> elements = driver.findElements(By.xpath("//div[@id='bookings']/div[@class='row']/div[1]/p"));
+		for (WebElement element : elements) {
+			String firstName = element.getText();
+			Assert.assertFalse(firstName==textDisplayed);
+			break;
+		}
 	}
+
+	/**
+	 *
+	 * @param textDisplayed this is the text used yto get the delete button for each row
+	 */
+	public void clickDeleteButton(String textDisplayed){
+		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textDisplayed +"']/ancestor::div[@class='row']/div[7]"));
+		element.click();
+	}
+
+
 
 }
 		

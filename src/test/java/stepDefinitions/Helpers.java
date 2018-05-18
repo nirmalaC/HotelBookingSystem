@@ -21,11 +21,10 @@ import java.util.logging.Logger;
 
 public class Helpers {
 
-    public Properties readPropertisFile() throws IOException {
+    public static Properties readPropertisFile() throws IOException {
         FileInputStream fis = null;
         fis = new FileInputStream("C:\\HotelBookingSystem\\src\\test\\resources\\Config.properties");
         Properties property = new Properties();
-
         property.load(fis);
         return property;
     }
@@ -34,5 +33,12 @@ public class Helpers {
         WebDriverWait wait = new WebDriverWait(Hooks.driver, 30);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void waitForElementClickable(WebElement element){
+        WebDriverWait wait = new WebDriverWait(Hooks.driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+
 
 }
