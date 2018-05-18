@@ -16,6 +16,8 @@ Tools And Environment :
 6. Required drivers (Chrome, FireFox and InternetExplorar)
 7.Windows 64bit
 
+Configure JAVA_HOME and MAVEN_HOM in the Environmental Variables : Follow the setup instructions specified in here https://www.mkyong.com/maven/how-to-install-maven-in-windows/  
+
 
 Test Architecture :
 -----------------
