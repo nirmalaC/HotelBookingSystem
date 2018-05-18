@@ -25,7 +25,7 @@ Test Architecture :
 		|src/test/java
 		|	|pageobjects
 		|	|	|BookingHomePage
-		|	|	|helpers
+		|	|	|Helpers
 		|   |stepDefinitions
        		|	|Hooks
         	|	|StepDefinitions
