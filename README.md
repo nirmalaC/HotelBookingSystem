@@ -17,6 +17,9 @@ Tools And Environment :
 
 Configure JAVA_HOME and MAVEN_HOM in the Environmental Variables : Follow the setup instructions specified in here https://www.mkyong.com/maven/how-to-install-maven-in-windows/  
 
+Note :
+------
+Download this project into the c drive to run the tests.
 
 Test Architecture :
 -----------------
