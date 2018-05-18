@@ -1,4 +1,4 @@
-Selenium-Cucumber-PageFactory-Java-Maven
+Cucumber-PageFactory-Maven
 =================
 I have used selenium-cucumber-Maven with PageFactory Design Pattern.
 
