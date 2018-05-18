@@ -31,7 +31,7 @@ Test Architecture :
         	|	|StepDefinitions
         	|	|TestRunner
 		|src/test/resources
-		|	|_features
+		|	|Features
 		|	|	|hotelBooking.feature
 		|	|Config.Properties
 
