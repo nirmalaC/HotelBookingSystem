@@ -6,7 +6,7 @@ selenium-cucumber is a behavior driven development (BDD) approach to write autom
 Page Factory is an inbuilt Page Object Model concept for Selenium WebDriver but it is very optimized.
 Here we follow the concept of separation of Page Object Repository and Test Methods. Additionally, with the help of PageFactory class, we use annotations @FindBy to find WebElement. We use initElements method to initialize web elements.
 
-Tools and Environment:
+Tools and Environment :
 1. IntelliJ IDEA 2016
 2. Java
 3. Maven
@@ -14,8 +14,6 @@ Tools and Environment:
 5. Git
 6. Required drivers (Chrome, FireFox and InternetExplorar)
 
-5.Git
-8.Required drivers (Chrome, firefox, ie...)
 
 Test Architecture
 --------------
