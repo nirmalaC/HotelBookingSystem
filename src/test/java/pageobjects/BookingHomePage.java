@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
-import stepDefinitions.Helpers;
+import helpers.Helpers;
 import stepDefinitions.Hooks;
 import java.util.List;
 import java.util.logging.Logger;

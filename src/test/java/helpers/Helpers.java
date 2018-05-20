@@ -1,4 +1,4 @@
-package stepDefinitions;
+package helpers;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import stepDefinitions.Hooks;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,9 +39,4 @@ public class Helpers {
         WebDriverWait wait = new WebDriverWait(Hooks.driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-
-
-
-
-
 }

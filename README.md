@@ -1,19 +1,20 @@
-Cucumber-PageFactory-Maven
+Framework Design Approach
 =================
 I have used selenium-cucumber-Maven with PageFactory Design Pattern.
 
-selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
+Selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
 Page Factory is an inbuilt Page Object Model concept for Selenium WebDriver but it is very optimized.Here we follow the concept of separation of Page Object Repository and Test Methods. Additionally, with the help of PageFactory class, we use annotations @FindBy to find WebElement. We use initElements method to initialize web elements.
 
 Tools And Environment :
 -----------------------
 1. IntelliJ IDEA 2016
-2. Java
-3. Maven
+2. Java-8
+3. Maven-3.5.3
 4. Enable cucumber-java plugin in IntelliJ
 5. Git
-6. Required drivers (Chrome, FireFox and InternetExplorer)
-7. Windows 64bit
+6. Required driver versions (Chrome-v2.38 & Gecko-v0.20.1)
+7. Required browsers (Chrome-v66.0 & Firefox-v60.0)
+8. Windows 64bit
 
 Configure JAVA_HOME and MAVEN_HOM in the Environmental Variables : Follow the setup instructions specified in here https://www.mkyong.com/maven/how-to-install-maven-in-windows/  
 
@@ -61,13 +62,14 @@ You can run the test by using test runner file:
 
 OR 
 
-Go to your project directory from terminal and hit following commands
-- mvn test 
+Run using maven commands through terminal:
+- "mvn test" This will run tests on default browser which is set to chrome.
+- "mvn test -Dbrowser=browserName" This will run tests on either Chrome or Firefox based on the given browserName.
 
 Cucumber Reports :
 ------------------
 
-Once the tests are executed through the TestRunner Class the reporst are generated in HTML format inside target/cucumber-reports.
+Once the tests are executed the reports are generated in HTML format inside target/cucumber-reports.
 Right click on the index.html file and select open in browser, we can view the cucumber reports in web browser.
 
 Note : 

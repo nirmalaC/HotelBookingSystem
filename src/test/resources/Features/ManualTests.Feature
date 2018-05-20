@@ -11,7 +11,26 @@
 @ManualTests
 Feature : Hotel Booking System
 
-  Scenario Outline:  User successfully saves booking reference
+  As a customer
+  I want to use the book hotel reservation system
+  So that I can book my hotel reservations
+
+  #Test Scenarios coverage for both positive and negative cases.
+  Positive Cases
+  User successfully saves booking reference
+  User successfully deletes a saved booking reference
+
+  Negative Cases
+  User should be displayed with error message if invalid first name are provided and the booking should not be saved
+  User should be displayed with error message if invalid Sure name are provided and the booking should not be saved
+  User should be displayed with error message if invalid price are provided and the booking should not be saved
+  User should not be able to save booking on past dates
+  User should not be able to save checkout date lesser than checkin date
+
+  Security Cases
+  User should not be able to save the booking (Security testing)
+
+  Scenario Outline: User successfully saves booking reservation.
   Given I entered the valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
   When I clciked Save button
   Then the booking should be saved
@@ -22,7 +41,7 @@ Feature : Hotel Booking System
   | Jack       | Jones     | 500   | true   |  2018-06-20   |   2018-06-20    |
   | Jimmy      | Bill      | 460   | false  |  2018-06-27   |   2018-07-05    |
 
-  Scenario Outline:  User successfully deletes a saved booking reference
+  Scenario Outline: User successfully deletes a saved booking reservation.
   Given I entered the valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
   And I saved the booking
   When I clciked delete button
@@ -33,7 +52,7 @@ Feature : Hotel Booking System
     | Jack       | Jones     | 500   | true   |  20          |  25            |
     | Jimmy      | Bill      | 460   | false  |  25          |  28            |
 
-  Scenario Outline:  User should be displayed with error message if invalid first name are provided and the booking should not be saved
+  Scenario Outline: User should be displayed with error message if invalid first name are provided and the booking should not be saved
   Given I entered the invalid details : <first_name>, <sure_name>, <price>, <deposit>
   When I clciked Save button
   Then the booking should not be saved
@@ -45,7 +64,7 @@ Feature : Hotel Booking System
   | null            | Jones          | 460   | false  | Please enter a vaild First Name  |
   |                 | Jones          | 460   | false  | Please enter a vaild First Name  |
 
-  Scenario Outline:  User should be displayed with error message if invalid Sure name are provided and the booking should not be saved
+  Scenario Outline: User should be displayed with error message if invalid Surname are provided and the booking should not be saved
   Given I entered the invalid details : <first_name>, <sure_name>, <price>, <deposit>
   When I clciked Save button
   Then the booking should not be saved
@@ -57,7 +76,7 @@ Feature : Hotel Booking System
   | Jack          | 1234^&*          | 460   | false  | Please enter a vaild Sure Name   |
   | Jack          | null             | 460   | false  | Please enter a vaild Sure Name   |
 
-  Scenario Outline:  User should be displayed with error message if invalid price are provided and the booking should not be saved
+  Scenario Outline: User should be displayed with error message if invalid price are provided and the booking should not be saved
   Given I entered the invalid details : <first_name>, <sure_name>, <price>, <deposit>
   When I clciked Save button
   Then the booking should not be saved
@@ -77,7 +96,6 @@ Feature : Hotel Booking System
   | Jack       | Jones     | 500   | true   |  2018-06-20   |   2018-06-20    | Please enter a vaild checkin date   |
   | Jimmy      | Bill      | 460   | false  |  2018-06-27   |   2018-07-05    | Please enter a vaild checkin date   |
 
-
   Scenario: User should not be able to save checkout date lesser than checkin date
     Given I entered the invalid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_dtae>, <checkout_dtae>
     When I clciked Save button
@@ -89,7 +107,7 @@ Feature : Hotel Booking System
   | Jack       | Jones     | 500   | true   |  2018-06-20   |   2018-06-12    | Checkout date should be greater than the checkin date   |
 
 #Below are the findings are of security testing :
-  Scenario Outline:  User should not be able to save the booking (Security testing)
+  Scenario Outline: User should not be able to save the booking (Security testing)
     Given I entered the valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
     When I clciked Save button
     Then the booking should be saved
