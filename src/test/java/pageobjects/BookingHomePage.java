@@ -108,6 +108,15 @@ public class BookingHomePage extends Hooks{
 	}
 
 
+	/**
+	 *
+	 * @param firstname The firstname parameter is the text to enter that needs to be verified
+	 * @param surename The surename parameter is the text to enter that needs to be verified
+	 * @param bookingPrice The bookingprice parameter is the text to enter that needs to be verified
+	 * @param deposit The deposit parameter is to text to enter that needs to be verified
+	 * @param checkinDate The firstname parameter is the text to enter that needs to be verified
+	 * @param checkoutDate The checkoutDateis a parameter is the text to enter that needs to be verified
+	 */
 	public void checkDetailsIsDisplayed(String firstname, String surename, String bookingPrice, String deposit, String checkinDate, String checkoutDate){
 		clicksavedDetailsAreDisplayed(firstname, 1);
 		clicksavedDetailsAreDisplayed(surename, 2);
@@ -118,6 +127,11 @@ public class BookingHomePage extends Hooks{
 
 	}
 
+	/**
+	 *
+	 * @param textValue Text value ued to verify if the text is displayed.
+	 * @param divIndex This is the value used in the xpath for getting the webelements
+	 */
 	public void clicksavedDetailsAreDisplayed(String textValue, int divIndex){
 		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textValue +"']/ancestor::div[@class='row']"));
 		Helpers.waitForVisibleElement(element);
@@ -128,17 +142,32 @@ public class BookingHomePage extends Hooks{
 		}
 	}
 
+	/**
+	 *
+	 * @param textValue Text value ued to verify if the text is displayed.
+	 * @param divIndex This is the value used in the xpath for getting the webelements
+	 */
 	public void clicksavedCheckInDateIsDisplayed(String textValue, int divIndex){
 		datesDisplayed(textValue, divIndex);
 		log.info("CheckIn date is displayed");
 	}
 
+	/**
+	 *
+	 * @param textValue Text value ued to verify if the text is displayed.
+	 * @param divIndex This is the value used in the xpath for getting the webelements
+	 */
 	public void clicksavedCheckOutDateIsDisplayed(String textValue, int divIndex){
 		datesDisplayed(textValue, divIndex);
 		log.info("CheckOut date is displayed");
 	}
 
-	public void datesDisplayed(String textValue, int divIndex){
+	/**
+	 * This is the helper method for dates
+	 * @param textValue Text value ued to verify if the text is displayed.
+	 * @param divIndex This is the value used in the xpath for getting the webelements
+	 */
+	public static void datesDisplayed(String textValue, int divIndex){
 		List<WebElement> elements = driver.findElements(By.xpath("//div[@id='bookings']/div[@class='row']/div["+ divIndex +"]/p"));
 		for (WebElement eachElement : elements) {
 			String formatDate = eachElement.getText();
@@ -152,8 +181,6 @@ public class BookingHomePage extends Hooks{
 			}
 		}
 	}
-
-
 
 	/**
 	 *
@@ -193,6 +220,11 @@ public class BookingHomePage extends Hooks{
 
 	}
 
+	/**
+	 * This is the method to get the staleElement exception.
+	 * @param divIndex This is the value used in the xpath for getting the webelements
+	 * @return
+	 */
 	public List<WebElement> retryingListElement(int divIndex) {
 		List<WebElement> elements = null;
 		boolean result = false;

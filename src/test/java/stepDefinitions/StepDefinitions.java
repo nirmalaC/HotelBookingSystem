@@ -10,15 +10,6 @@ public class StepDefinitions {
 
     BookingHomePage page = PageFactory.initElements(BookingHomePage.driver, BookingHomePage.class);
 
-    /**
-     *
-     * @param firstname The firstname parameter is the text to enter in the firstname textbox while saving booking
-     * @param surename The surename parameter is the text to enter in the surename textbox while saving booking
-     * @param bookingprice The bookingprice parameter is the text to enter in the price textbox while saving booking
-     * @param deposit The deposit parameter is to set value in deposit dropdown while saving booking
-     * @param checinDate The firstname parameter is the text to enter in the firstname textbox while saving booking
-     * @param checkoutDate The checkoutDateis a parameter to set date in textbox datepicker while saving booking
-     */
     @Given("^I enter vaild details : (.*), (.*), (.*), (.*), (.*), (.*)$")
     public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate ) {
         page.enterDetails(firstname,surename, bookingprice, deposit, checinDate, checkoutDate);

