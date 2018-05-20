@@ -3,31 +3,23 @@ package stepDefinitions;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import lombok.experimental.Helper;
-import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import lombok.Getter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class Hooks{
 
-    @Getter
     public static WebDriver driver;
 
     private static Logger Log = Logger.getLogger(Hooks.class.getName());
 
-
     /**
-     * Delete all cookies at the start of each scenario to avoid
+     * This will initialize the driver instance.
      */
     @Before
     public void openBrowser() throws IOException {
@@ -48,10 +40,10 @@ public class Hooks{
             driver.get(property.getProperty("url"));
     }
 
-    @After
     /**
-     * Embed a screenshot in test report if test is marked as failed
+     * This will quit the driver instance
      */
+    @After
     public void quiteDriver(Scenario scenario) {
         driver.quit();
     }

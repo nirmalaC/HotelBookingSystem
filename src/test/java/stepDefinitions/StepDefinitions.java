@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Given;
@@ -30,14 +29,14 @@ public class StepDefinitions {
         page.save_button.click();
     }
 
-    @Then("^I should be able to save the booking : (.*)$")
-    public void iShouldBeAbleToMake(String firstname) throws Throwable {
-        page.checkDetailsDisplayed(firstname);
+    @Then("^I should be able to save the booking : (.*), (.*), (.*), (.*), (.*), (.*)$")
+    public void iShouldBeAbleToMake(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate) throws Throwable {
+        page.checkDetailsIsDisplayed(firstname, surename, bookingprice, deposit,checinDate,checkoutDate );
     }
 
-    @Given("^vaild booking exists : (.*)$")
-    public void vaildBookingExistsFirstnameSurename(String firstname) {
-        page.checkDetailsDisplayed(firstname);
+    @Given("^vaild booking exists : (.*), (.*), (.*), (.*), (.*), (.*)$")
+    public void vaildBookingExistsFirstnameSurename(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate) {
+        page.checkDetailsIsDisplayed(firstname, surename, bookingprice, deposit,checinDate,checkoutDate );
     }
 
     @When("^I click on the delete button : (.*)$")
@@ -45,8 +44,8 @@ public class StepDefinitions {
         page.clickDeleteButton(firstname);
     }
 
-    @Then("^the saved bookings should be deleted : (.*)$")
-    public void theSavedBookingsShouldBeDeletedFirstnameSurename(String firstname) {
-        page.checkDetailsAreDeleted(firstname);
+    @Then("^the saved bookings should be deleted : (.*), (.*)$")
+    public void theSavedBookingsShouldBeDeletedFirstnameSurename(String firstname, String surename) {
+        page.checkDetailsAreNotDeleted(firstname, surename);
     }
 }

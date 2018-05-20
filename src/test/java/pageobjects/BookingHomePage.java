@@ -1,24 +1,21 @@
 package pageobjects;
 
-import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import stepDefinitions.Helpers;
 import stepDefinitions.Hooks;
-
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.logging.Logger;
 
 
 public class BookingHomePage extends Hooks{
+
+	public static Logger log = Logger.getLogger(String.valueOf(BookingHomePage.class));
 
 	@FindBy(how= How.ID, using="firstname")
 	public static WebElement first_name;
@@ -87,15 +84,9 @@ public class BookingHomePage extends Hooks{
 	 */
 	public void checkOutDate(String checkoutDate) {
        check_out.click();
-		List<WebElement> rows = datepicker_table.findElements(By.tagName("tr"));
-		List<WebElement> columns = datepicker_table.findElements(By.tagName("td"));
-
-		for(WebElement cell : columns) {
-
-			if(cell.getText().equals(checkoutDate)){
-				cell.findElement(By.linkText(checkoutDate)).click();
-				break;
-			}}
+//		List<WebElement> rows = datepicker_table.findElements(By.tagName("tr"));
+		WebElement date = datepicker_table.findElement(By.xpath("//td[not(contains(@class,'ui-datepicker-other-month'))]/a[text()='"+ checkoutDate +"']"));
+		date.click();
 	}
 
 	/**
@@ -116,39 +107,107 @@ public class BookingHomePage extends Hooks{
 		checkOutDate(checkoutDate);
 	}
 
-	/**
-	 *
-	 * @param textDisplayed This is the text by which we get the entire saved row assert the row after saving the details
-	 */
-	public void checkDetailsDisplayed(String textDisplayed){
-		driver.navigate().refresh();
-		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textDisplayed +"']/ancestor::div[@class='row']"));
-		Assert.assertTrue(element.isDisplayed());
+
+	public void checkDetailsIsDisplayed(String firstname, String surename, String bookingPrice, String deposit, String checkinDate, String checkoutDate){
+		clicksavedDetailsAreDisplayed(firstname, 1);
+		clicksavedDetailsAreDisplayed(surename, 2);
+		clicksavedDetailsAreDisplayed(bookingPrice, 3);
+		clicksavedDetailsAreDisplayed(deposit, 4);
+		clicksavedCheckInDateIsDisplayed(checkinDate, 5);
+		clicksavedCheckOutDateIsDisplayed(checkoutDate, 6);
+
 	}
 
-	/**
-	 *
-	 * @param textDisplayed this is the text that has to be verified that it is not present on the page
-	 */
-	public void checkDetailsAreDeleted(String textDisplayed){
-		List<WebElement> elements = driver.findElements(By.xpath("//div[@id='bookings']/div[@class='row']/div[1]/p"));
-		for (WebElement element : elements) {
-			String firstName = element.getText();
-			Assert.assertFalse(firstName==textDisplayed);
-			break;
+	public void clicksavedDetailsAreDisplayed(String textValue, int divIndex){
+		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textValue +"']/ancestor::div[@class='row']"));
+		Helpers.waitForVisibleElement(element);
+		Assert.assertTrue(element.isDisplayed());
+		List<WebElement> elements = driver.findElements(By.xpath("//div[@id='bookings']/div[@class='row']/div["+ divIndex +"]/p"));
+		for (WebElement eachElement : elements) {
+			Assert.assertTrue(eachElement.isDisplayed());
 		}
 	}
 
-	/**
-	 *
-	 * @param textDisplayed this is the text used yto get the delete button for each row
-	 */
-	public void clickDeleteButton(String textDisplayed){
-		WebElement element = driver.findElement(By.xpath("//p[text()='"+ textDisplayed +"']/ancestor::div[@class='row']/div[7]"));
-		element.click();
+	public void clicksavedCheckInDateIsDisplayed(String textValue, int divIndex){
+		datesDisplayed(textValue, divIndex);
+		log.info("CheckIn date is displayed");
+	}
+
+	public void clicksavedCheckOutDateIsDisplayed(String textValue, int divIndex){
+		datesDisplayed(textValue, divIndex);
+		log.info("CheckOut date is displayed");
+	}
+
+	public void datesDisplayed(String textValue, int divIndex){
+		List<WebElement> elements = driver.findElements(By.xpath("//div[@id='bookings']/div[@class='row']/div["+ divIndex +"]/p"));
+		for (WebElement eachElement : elements) {
+			String formatDate = eachElement.getText();
+			//split year, month and days from the date using StringBuffer.
+			StringBuffer sBuffer = new StringBuffer(formatDate);
+			String year = sBuffer.substring(2,4);
+			String mon = sBuffer.substring(5,7);
+			String dd = sBuffer.substring(8,10);
+			if (dd.equals(textValue)){
+				log.info("Date is displayed");
+			}
+		}
 	}
 
 
+
+	/**
+	 *
+	 * @param firstname The firstname parameter is used to verify that the deleted row is not displayed.
+	 * @param surename The surename parameter is used to verify that the deleted row is not displayed.
+	 */
+	public void checkDetailsAreNotDeleted(String firstname, String surename){
+		driver.navigate().refresh();
+		checkFirstNameIsNotDisplayed(firstname, 1);
+		checkFirstNameIsNotDisplayed(surename, 2);
+	}
+
+	/**
+	 *
+	 * @param textValue this is the text used to get the each value from each row
+	 */
+	public void clickDeleteButton(String textValue){
+		WebElement element = driver.findElement(By.xpath("//div[@id='bookings']/div[@class='row']/div/p[text()='"+ textValue +"']//ancestor::div[@class='row']/div[7]"));
+		element.click();
+	}
+
+	/**
+	 *
+	 * @param textValue this is the text used to get the delete button for each row
+	 * @param divIndex this is the index of div to get the column
+	 */
+	public void checkFirstNameIsNotDisplayed(String textValue, int divIndex) {
+		WebElement element = driver.findElement(By.cssSelector("div[class='jumbotron'] h1"));
+		Helpers.waitForVisibleElement(element);
+		List<WebElement> elements = retryingListElement(divIndex);
+		for (WebElement elementText : elements) {
+			String textDisplayed = elementText.getText();
+			if (!(textDisplayed == textValue)){
+				log.info("The text your are searching is not displayed in this row---->" + textDisplayed);
+			}
+	}
+
+	}
+
+	public List<WebElement> retryingListElement(int divIndex) {
+		List<WebElement> elements = null;
+		boolean result = false;
+		int attempts = 0;
+		while(attempts < 2) {
+			try {
+				elements = driver.findElements(By.xpath("//div[@id='bookings']/div[@class='row']/div["+ divIndex +"]/p"));
+				result = true;
+				break;
+			} catch(StaleElementReferenceException e) {
+			}
+			attempts++;
+		}
+		return elements;
+	}
 
 }
 		

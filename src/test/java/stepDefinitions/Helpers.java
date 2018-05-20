@@ -29,15 +29,17 @@ public class Helpers {
         return property;
     }
 
-    public void waitForVisibleElement(WebElement element){
+    public static void waitForVisibleElement(WebElement element){
         WebDriverWait wait = new WebDriverWait(Hooks.driver, 30);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitForElementClickable(WebElement element){
+    public static void waitForElementClickable(WebElement element){
         WebDriverWait wait = new WebDriverWait(Hooks.driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
+
 
 
 
