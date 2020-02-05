@@ -29,7 +29,7 @@ public class Helpers {
      */
     public static Properties readPropertisFile() throws IOException {
         FileInputStream fis = null;
-        fis = new FileInputStream("C:\\HotelBookingSystem\\src\\test\\resources\\Config.properties");
+        fis = new FileInputStream("./src/test/resources/Config.properties");
         Properties property = new Properties();
         property.load(fis);
         return property;

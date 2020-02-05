@@ -9,9 +9,9 @@ Feature: Hotel booking reservation
     When I click on the save button
     Then I should be able to save the booking : <firstname>, <surename>, <price>, <deposit>, <checkin_date>, <checkout_date>
     Examples:
-    | firstname  | surename   | price   | deposit   | checkin_date | checkout_date |
-    | Jack       | Bob        | 380     | true      | 20           |  25           |
-    | Jim        | Jole       | 650     | false     | 16           |  22           |
+      | firstname | surename | price | deposit | checkin_date | checkout_date |
+      | Jack      | Bob      | 380   | true    | 20           | 25            |
+      | Jim       | Jole     | 650   | false   | 16           | 22            |
 
   Scenario Outline: User should be able to delete the saved bookings successfully.
     Given vaild booking exists : <firstname>, <surename>, <price>, <deposit>, <checkin_date>, <checkout_date>
@@ -19,6 +19,6 @@ Feature: Hotel booking reservation
     Then the saved bookings should be deleted : <firstname>, <surename>
 
     Examples:
-      | firstname  | surename   | price   | deposit   | checkin_date | checkout_date |
-      | Jack       | Bob        | 380     | true      | 20           |  25           |
-      | Jim        | Jole       | 650     | false     | 16           |  22           |
+      | firstname | surename | price | deposit | checkin_date | checkout_date |
+      | Jack      | Bob      | 380   | true    | 20           | 25            |
+      | Jim       | Jole     | 650   | false   | 16           | 22            |

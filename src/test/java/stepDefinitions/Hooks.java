@@ -7,6 +7,8 @@ import helpers.Helpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pageobjects.BookingHomePage;
+import sun.rmi.runtime.Log;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -17,13 +19,17 @@ public class Hooks{
 
     public static WebDriver driver;
 
-    private static Logger Log = Logger.getLogger(Hooks.class.getName());
+    public static Logger log = Logger.getLogger(String.valueOf(Hooks.class));
+
 
     /**
      * This will initialize the driver instance.
      */
-    @Before
+    @Before("~@ApiTests")
     public void openBrowser() throws IOException {
+
+        log.info("Test Started");
+
         Properties configProperties = Helpers.readPropertisFile();
 
         String browser = System.getProperty("browser");
@@ -54,9 +60,11 @@ public class Hooks{
     /**
      * This will quit the driver instance
      */
-    @After
+    @After("~@ApiTests")
     public void quiteDriver(Scenario scenario) {
         driver.quit();
+        log.info("Test Finished");
+
     }
     
 }
