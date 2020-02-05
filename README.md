@@ -65,8 +65,8 @@ You can run the test by using test runner file:
 OR 
 
 Run using maven commands through terminal:
-- "mvn test" This will run tests on default browser which is set to chrome.
-- "mvn test -Dbrowser=browserName" This will run tests on either Chrome or Firefox based on the given browserName.
+- "mvn test" This will run both api and selenium tests on default browser which is set to chrome.
+- "mvn test -Dbrowser=browserName" This will run Selenium tests on either Chrome or Firefox based on the given browserName.
 
 Cucumber Reports :
 ------------------
