@@ -8,11 +8,9 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.parser.ParseException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
-
 import static com.google.common.base.Preconditions.checkArgument;
 import static io.restassured.RestAssured.with;
 
@@ -21,24 +19,29 @@ public class commonSteps {
 
     public static Logger Log = Logger.getLogger(commonSteps.class.getName());
 
-    private final String UTF8_BOM = new String("\uFEFF".getBytes(StandardCharsets.UTF_8));
-
-    public ValidatableResponse postUserDetails(String URL) throws IOException, ParseException, JsonParseException {
+    /**
+     *
+     * @param URL -- Parameter used to post the data.
+     * @return -- Returns a validatableResponse which can be used by other metheds.
+     * @throws IOException -- This exception happens when there is a failure during reading, writing and searching file or directory operations.
+     * @throws JsonParseException -- Exception type for parsing problems, used when non-well-formed content (content that does not conform to JSON syntax as per specification) is encountered.
+     */
+    public ValidatableResponse postUserDetails(String URL) throws IOException, JsonParseException {
 
         String checkindate = resolveDateformat("sysdate+10");
         String checkoutdate = resolveDateformat("sysdate+15");
         Log.info("resolved checkindate ::: " + checkindate);
 
 
-        // Jackson Object mapper can parse JSON
+        // Jackson Object mapper to parse JSON
         ObjectMapper objectMapper = new ObjectMapper();
 
+        //JsonNode is Jackson's tree model (object graph model) for JSON. Jackson can read JSON into a JsonNode instance, and write a JsonNode out to JSON
         JsonNode obj = objectMapper.readTree(new File("./src/test/resources/JsonFiles/Post.json"));
 
-
+        // Update json values
         ((ObjectNode) obj.get("bookingdates")).put("checkin", checkindate);
         ((ObjectNode) obj.get("bookingdates")).put("checkout", checkoutdate);
-
 
 
         ValidatableResponse validatableResponse =
@@ -58,8 +61,13 @@ public class commonSteps {
         return validatableResponse;
     }
 
-
-    public ValidatableResponse getUserDetails(String URL, String bookingId) throws IOException, ParseException {
+    /**
+     *
+     * @param URL -- Parameter used to post the data.
+     * @param bookingId -- Parameter used to get a specific user details.
+     * @return -- Rreturns a validatableResponse which can be used by other metheds.
+     */
+    public ValidatableResponse getUserDetails(String URL, String bookingId) {
 
 
         ValidatableResponse validatableResponse =
@@ -73,7 +81,14 @@ public class commonSteps {
             return validatableResponse;
         }
 
-    public ValidatableResponse deleteUserDetails(String URL, String bookingId) throws IOException, ParseException {
+
+    /**
+     *
+     * @param URL -- Parameter used to post the data.
+     * @param bookingId -- Parameter used to get a specific user details.
+     * @return -- eturns a validatableResponse which can be used by other metheds.
+     */
+    public ValidatableResponse deleteUserDetails(String URL, String bookingId) {
 
 
         ValidatableResponse validatableResponse =
@@ -88,6 +103,11 @@ public class commonSteps {
         return validatableResponse;
     }
 
+    /**
+     *
+     * @param dateMacro -- Parameter used to resolve the dates.
+     * @return -- Returns a validatableResponse which can be used by other metheds.
+     */
     public static String resolveDateformat(final String dateMacro) {
         checkArgument(dateMacro.contains("sysdate"),
                 "Only sysdate - today is supported, additions and subtractions. e.g: sysdate+1, sysdate, sysdate-2");
@@ -112,7 +132,6 @@ public class commonSteps {
     }
 
     public ValidatableResponse getRequest(String URL) throws IOException, ParseException {
-
 
         ValidatableResponse validatableResponse =
                 with()

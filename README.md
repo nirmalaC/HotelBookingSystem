@@ -31,9 +31,11 @@ Test Architecture :
 		|	|	|BookingHomePage
 		|	|	|Helpers
 		|       |stepDefinitions
-		|	|       |Hooks
-        	|	|	|StepDefinitions
-        	|	|	|TestRunner
+		|	|   |    |Hooks
+        |	|	|	|StepDefinitions
+        |	|	|	|ApiStepDefinitions
+        |   |ApiTestRunner
+        |   |TestRunner
 		|src/test/resources
 		|	|Features
 		|	|	|hotelBooking.feature

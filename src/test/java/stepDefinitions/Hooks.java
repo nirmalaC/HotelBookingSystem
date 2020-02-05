@@ -51,7 +51,7 @@ public class Hooks{
                 break;
         }
 
-        System.out.println("Opening Browser...."+browser);
+        log.info("Opening Browser...."+ browser );
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
             driver.get(configProperties.getProperty("url"));
