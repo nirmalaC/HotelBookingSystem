@@ -37,7 +37,7 @@ public class ApiHelper {
         ObjectMapper objectMapper = new ObjectMapper();
 
         //JsonNode is Jackson's tree model (object graph model) for JSON. Jackson can read JSON into a JsonNode instance, and write a JsonNode out to JSON
-        JsonNode obj = objectMapper.readTree(new File("./src/test/resources/JsonFiles/Post.json"));
+        JsonNode obj = objectMapper.readTree(new File("./src/test/resources/jsonFiles/post.json"));
 
         // Update json values
         ((ObjectNode) obj.get("bookingdates")).put("checkin", checkindate);

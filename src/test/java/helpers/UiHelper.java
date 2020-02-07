@@ -7,13 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobjects.BookingHomePage;
 import stepDefinitions.Hooks;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-import static pageobjects.BookingHomePage.*;
+import static pageobjects.bookingHomePage.*;
 
 public class UiHelper {
 

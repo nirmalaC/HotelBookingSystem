@@ -1,25 +1,22 @@
 package pageobjects;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
 import helpers.UiHelper;
 import stepDefinitions.Hooks;
-import java.util.List;
+
 import java.util.logging.Logger;
 
 import static helpers.UiHelper.datesDisplayed;
 
 
-public class BookingHomePage extends Hooks{
+public class bookingHomePage extends Hooks{
 
 	private UiHelper uiHelper = new UiHelper();
 
-	public static Logger log = Logger.getLogger(String.valueOf(BookingHomePage.class));
+	public static Logger log = Logger.getLogger(String.valueOf(bookingHomePage.class));
 
 	@FindBy(how= How.ID, using="firstname")
 	public static WebElement first_name;

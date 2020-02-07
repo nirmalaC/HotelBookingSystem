@@ -5,11 +5,11 @@ import cucumber.api.java.en.When;
 import cucumber.api.java.en.Given;
 import helpers.UiHelper;
 import org.openqa.selenium.support.PageFactory;
-import pageobjects.BookingHomePage;
+import pageobjects.bookingHomePage;
 
 public class StepDefinitions {
 
-    private BookingHomePage page = PageFactory.initElements(BookingHomePage.driver, BookingHomePage.class);
+    private bookingHomePage page = PageFactory.initElements(bookingHomePage.driver, bookingHomePage.class);
 
     private UiHelper uiHelper = new UiHelper();
 

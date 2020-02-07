@@ -40,11 +40,11 @@
             <artifactId>selenium-server</artifactId>
             <version>3.5.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.21.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-surefire-plugin</artifactId>-->
+            <!--<version>2.21.0</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -84,7 +84,6 @@
             <version>2.9.8</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -102,8 +101,8 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                        <include>**/java/ApiTest.java</include>
-                        <include>**/java/TestRunner.java</include>
+                        <include>**/java/apiTestRunner.java</include>
+                        <include>**/java/uiTestRunner.java</include>
                     </includes>
                 </configuration>
                 <executions>
