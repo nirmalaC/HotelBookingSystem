@@ -10,12 +10,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import pageobjects.BookingHomePage;
 import sun.rmi.runtime.Log;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-public class Hooks{
+public class Hooks {
 
     public static WebDriver driver;
 
@@ -34,27 +35,57 @@ public class Hooks{
 
         String browser = System.getProperty("browser");
 
-        if(browser==null)
-        {
-            browser = configProperties.getProperty("browser");
-        }
+        log.info("OS Name ::: " + System.getProperty("os.name").contains("Windows"));
 
-        switch (browser)
-        {
-            case "chrome":
-                System.setProperty("webdriver.chrome.driver", configProperties.getProperty("chromeDriver"));
-                driver = new ChromeDriver();
-                break;
-            case "firefox":
-                System.setProperty("webdriver.gecko.driver",configProperties.getProperty("geckoDriver"));
-                driver = new FirefoxDriver();
-                break;
-        }
+        if (System.getProperty("os.name").contains("Windows")) {
+            if (browser == null) {
+                browser = configProperties.getProperty("browser");
+            }
 
-        log.info("Opening Browser...."+ browser );
+            switch (browser) {
+                case "chrome":
+                    File chromePath = new File(configProperties.getProperty("chromeDriver"));
+                    log.info("chrome path ::" + chromePath);
+                    System.setProperty("webdriver.chrome.driver", chromePath.getAbsolutePath());
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    File firefoxPath = new File(configProperties.getProperty("chromeDriver"));
+                    log.info("chrome path ::" + firefoxPath);
+                    System.setProperty("webdriver.gecko.driver", firefoxPath.getAbsolutePath());
+                    driver = new FirefoxDriver();
+                    break;
+            }
+
+            log.info("Opening Browser...." + browser);
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.get(configProperties.getProperty("url"));
+        }else if (System.getProperty("os.name").contains("Mac")){
+            if (browser == null) {
+                browser = configProperties.getProperty("browser");
+            }
+
+            switch (browser) {
+                case "chrome":
+                    File chromePath = new File(configProperties.getProperty("chromeDriver"));
+                    log.info("chrome path ::" + chromePath);
+                    System.setProperty("webdriver.chrome.driver", chromePath.getAbsolutePath());
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    File firefoxPath = new File(configProperties.getProperty("chromeDriver"));
+                    log.info("chrome path ::" + firefoxPath);
+                    System.setProperty("webdriver.gecko.driver", firefoxPath.getAbsolutePath());
+                    driver = new FirefoxDriver();
+                    break;
+            }
+
+            log.info("Opening Browser...." + browser);
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.get(configProperties.getProperty("url"));
+        }
     }
 
     /**
@@ -66,5 +97,5 @@ public class Hooks{
         log.info("Test Finished");
 
     }
-    
+
 }

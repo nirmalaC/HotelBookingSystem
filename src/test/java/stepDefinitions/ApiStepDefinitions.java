@@ -4,17 +4,16 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import helpers.commonSteps;
+import helpers.ApiHelper;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.parser.ParseException;
-import org.junit.Assert;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import static helpers.commonSteps.resolveDateformat;
+import static helpers.ApiHelper.resolveDateformat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -23,7 +22,7 @@ public class ApiStepDefinitions {
 
     public static Logger Log = Logger.getLogger(ApiStepDefinitions.class.getName());
     public String URL = "http://hotel-test.equalexperts.io/booking";
-    private commonSteps steps = new commonSteps();
+    private ApiHelper steps = new ApiHelper();
     public String bookingId;
 
 

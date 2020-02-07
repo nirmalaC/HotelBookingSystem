@@ -1,8 +1,8 @@
 ﻿{
-  "firstname": "Jack",
-  "lastname": "Bob",
-  "totalprice": 380,
-  "depositpaid": true,
+  "firstname": "Laura",
+  "lastname": "Sim",
+  "totalprice": 594.38,
+  "depositpaid": false,
   "bookingdates": {
     "checkin": "2020-01-21",
     "checkout": "2020-01-27"

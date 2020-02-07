@@ -23,6 +23,7 @@ public class StepDefinitions {
     @Then("^I should be able to save the booking : (.*), (.*), (.*), (.*), (.*), (.*)$")
     public void iShouldBeAbleToMake(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate) throws Throwable {
         page.checkDetailsIsDisplayed(firstname, surename, bookingprice, deposit,checinDate,checkoutDate );
+        page.clickDeleteButton(firstname);
     }
 
     @Given("^vaild booking exists : (.*), (.*), (.*), (.*), (.*), (.*)$")

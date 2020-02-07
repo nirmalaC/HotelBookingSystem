@@ -199,6 +199,7 @@ public class BookingHomePage extends Hooks{
 	 */
 	public void clickDeleteButton(String textValue){
 		WebElement element = driver.findElement(By.xpath("//div[@id='bookings']/div[@class='row']/div/p[text()='"+ textValue +"']//ancestor::div[@class='row']/div[7]"));
+		Helpers.waitForVisibleElement(element);
 		element.click();
 	}
 

@@ -14,7 +14,8 @@ Feature: Hotel booking reservation
       | Jim       | Jole     | 650   | false   | 16           | 22            |
 
   Scenario Outline: User should be able to delete the saved bookings successfully.
-    Given vaild booking exists : <firstname>, <surename>, <price>, <deposit>, <checkin_date>, <checkout_date>
+    Given I enter vaild details : <firstname>, <surename>, <price>, <deposit>, <checkin_date>, <checkout_date>
+    And I click on the save button
     When I click on the delete button : <firstname>
     Then the saved bookings should be deleted : <firstname>, <surename>
 

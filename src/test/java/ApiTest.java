@@ -10,8 +10,8 @@ import java.util.logging.Logger;
         features = "src/test/resources/Features",
         glue={"stepDefinitions"},
         monochrome = true,
-        plugin = { "pretty", "html:target/cucumber-reports" },
+        plugin = { "pretty", "html:target/api-cucumber-reports" },
         tags = {"@ApiTests", "~@FeatureAutomationTest", "~@ManualTests"}
 )
-public class ApiTestRunner {
+public class ApiTest {
 }

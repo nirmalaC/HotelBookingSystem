@@ -1,12 +1,12 @@
-#All the acceptance tests are written based on the below assumptions :
-#1. Error messages are displayed when invalid details are provided (e.g : firstname, surename, price and deposit, checkin date and checkout date)
-#2. Error messages are displayed when checkout date is lesser than the checkin date or this scenario should not be allowed.
-#3. Success message is displayed when a booking is saved successfully.
-#4. Success message is displayed when a booking is deleted successfully.
-#5. Bookings canot be saved for past dates and only saved for future dates.
-#6. Firstname and Surename fields only allow Alphabets(A-Z or a-z). Numeric or special characters are allowed.
-#7. Deposit field only allows numeric characters(0-9). Alphabets are nort allowed.
-#8. Checkin and checkout dates only allows vaild date format.
+All the acceptance tests are written based on the below assumptions :
+1. Error messages are displayed when invalid details are provided (e.g : firstname, surename, price and deposit, checkin date and checkout date)
+2. Error messages are displayed when checkout date is lesser than the checkin date or this scenario should not be allowed.
+3. Success message is displayed when a booking is saved successfully.
+4. Success message is displayed when a booking is deleted successfully.
+5. Bookings canot be saved for past dates and only saved for future dates.
+6. Firstname and Surename fields only allow Alphabets(A-Z or a-z). Numeric or special characters are allowed.
+7. Deposit field only allows numeric characters(0-9). Alphabets are nort allowed.
+8. Checkin and checkout dates only allows vaild date format.
 
 @ManualTests
 Feature : Hotel Booking System
