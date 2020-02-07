@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import helpers.ApiHelper;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.parser.ParseException;
+import org.junit.Assert;
 
 import java.io.IOException;
 import java.util.List;
@@ -72,14 +73,15 @@ public class ApiStepDefinitions {
     @Then("^the saved bookings should be deleted$")
     public void theSavedBookingsShouldBeDeleted() throws IOException, ParseException {
         ValidatableResponse response = steps.getRequest(URL);
-        List<String> bookingid = response.extract().response().jsonPath().getList("bookingid");
-        Log.info("List of booking id :: " + bookingid);
-        for (String id : bookingid) {
-
-            if (!(id == null)) {
-                Log.info("The booking Id is successfully deleted");
-            }
-        }
+        String firstName = response.extract().response().jsonPath().getString("firstname");
+        Log.info("List of booking id :: " + firstName);
+        Assert.assertNull(firstName);
+//        for (String id : bookingid) {
+//
+//            if (!(id == null)) {
+//                Log.info("The booking Id is successfully deleted");
+//            }
+//        }
     }
 
 }

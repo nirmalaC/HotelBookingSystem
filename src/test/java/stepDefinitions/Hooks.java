@@ -3,12 +3,11 @@ package stepDefinitions;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import helpers.Helpers;
+import helpers.UiHelper;
+import helpers.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pageobjects.BookingHomePage;
-import sun.rmi.runtime.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +30,7 @@ public class Hooks {
 
         log.info("Test Started");
 
-        Properties configProperties = Helpers.readPropertisFile();
+        Properties configProperties = Utils.readPropertisFile();
 
         String browser = System.getProperty("browser");
 
@@ -50,7 +49,7 @@ public class Hooks {
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    File firefoxPath = new File(configProperties.getProperty("chromeDriver"));
+                    File firefoxPath = new File(configProperties.getProperty("geckoDriver"));
                     log.info("chrome path ::" + firefoxPath);
                     System.setProperty("webdriver.gecko.driver", firefoxPath.getAbsolutePath());
                     driver = new FirefoxDriver();
@@ -74,7 +73,7 @@ public class Hooks {
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    File firefoxPath = new File(configProperties.getProperty("chromeDriver"));
+                    File firefoxPath = new File(configProperties.getProperty("geckoDriver"));
                     log.info("chrome path ::" + firefoxPath);
                     System.setProperty("webdriver.gecko.driver", firefoxPath.getAbsolutePath());
                     driver = new FirefoxDriver();
