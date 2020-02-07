@@ -35,8 +35,8 @@ Test Architecture :
 		|	|   |    |Hooks
         |	|	|	|StepDefinitions
         |	|	|	|ApiStepDefinitions
-        |   |apiTestRunner
-        |   |uiTestRunner
+        |   |apiTest
+        |   |uiTest
 		|src/test/resources
 		|	|Features
 		|	|	|hotelBooking.feature
@@ -52,8 +52,8 @@ Test Architecture :
 
 - src/test/java/stepDefinitions/StepDefinitions - All the step definitions are implemented here.
 - src/test/java/stepDefinitions/Hooks - All the step definitions are implemented here.
-- src/test/java/stepDefinitions/apiTestRunner - This is the runner file used to run api tests.
-- src/test/java/stepDefinitions/uiTestRunner - This is the runner file used to run ui tests.
+- src/test/java/stepDefinitions/apiTest - This is the runner file used to run api tests.
+- src/test/java/stepDefinitions/uiTest - This is the runner file used to run ui tests.
 
 Writing a test :
 ----------------
@@ -62,7 +62,7 @@ The cucumber features goes in the `Features` library and should have the ".featu
 Running tests :
 --------------
 You can run the test by using test runner file:
-- Go to uiTestRunner file and right click and click run button to run individual tests
+- Go to uiTest file and right click and click run button to run individual tests
 OR
 Run using maven commands through terminal:
 - "mvn test" This will run both api and selenium tests.

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 		plugin = { "pretty", "html:target/ui-cucumber-reports" },
 		tags = {"@FeatureAutomationTest", "~@ManualTests"}
 		)
-public class uiTestRunner {
+public class uiTest {
 
 
 	

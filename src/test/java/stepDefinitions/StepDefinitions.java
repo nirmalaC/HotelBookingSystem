@@ -26,7 +26,7 @@ public class StepDefinitions {
     @Then("^I should be able to save the booking : (.*), (.*), (.*), (.*), (.*), (.*)$")
     public void iShouldBeAbleToMake(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate) throws Throwable {
         page.checkDetailsIsDisplayed(firstname, surename, bookingprice, deposit,checinDate,checkoutDate );
-        uiHelper.clickDeleteButton(firstname);
+        page.clickDeleteButton(firstname);
     }
 
     @Given("^vaild booking exists : (.*), (.*), (.*), (.*), (.*), (.*)$")
@@ -36,7 +36,7 @@ public class StepDefinitions {
 
     @When("^I click on the delete button : (.*)$")
     public void iClickOnTheDeleteButton(String firstname){
-        uiHelper.clickDeleteButton(firstname);
+        page.clickDeleteButton(firstname);
     }
 
     @Then("^the saved bookings should be deleted : (.*), (.*)$")

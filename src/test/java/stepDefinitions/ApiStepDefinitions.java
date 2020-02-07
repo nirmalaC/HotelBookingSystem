@@ -73,15 +73,12 @@ public class ApiStepDefinitions {
     @Then("^the saved bookings should be deleted$")
     public void theSavedBookingsShouldBeDeleted() throws IOException, ParseException {
         ValidatableResponse response = steps.getRequest(URL);
-        String firstName = response.extract().response().jsonPath().getString("firstname");
-        Log.info("List of booking id :: " + firstName);
-        Assert.assertNull(firstName);
-//        for (String id : bookingid) {
-//
-//            if (!(id == null)) {
-//                Log.info("The booking Id is successfully deleted");
-//            }
-//        }
+        List<Integer> bookingid = response.extract().response().jsonPath().getList("bookingid");
+        Log.info("List of booking id :: " + bookingid);
+        for (Integer id : bookingid) {
+            Log.info("id got :: " + id );
+            Assert.assertNotEquals(id.toString(), bookingId);
+        }
     }
 
 }

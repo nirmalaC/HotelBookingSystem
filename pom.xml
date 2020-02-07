@@ -101,8 +101,8 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                        <include>**/java/apiTestRunner.java</include>
-                        <include>**/java/uiTestRunner.java</include>
+                        <include>**/java/apiTest.java</include>
+                        <include>**/java/uiTest.java</include>
                     </includes>
                 </configuration>
                 <executions>
