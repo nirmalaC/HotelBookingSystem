@@ -11,7 +11,7 @@ Feature: Hotel booking reservation
     Examples:
       | firstname | surename | price | deposit | checkin_date | checkout_date |
       | Jack      | Bob      | 380   | true    | 20           | 25            |
-#      | Jim       | Jole     | 650   | false   | 16           | 22            |
+      | Jim       | Jole     | 650   | false   | 16           | 22            |
 
   Scenario Outline: User should be able to delete the saved bookings successfully.
     Given I enter vaild details : <firstname>, <surename>, <price>, <deposit>, <checkin_date>, <checkout_date>

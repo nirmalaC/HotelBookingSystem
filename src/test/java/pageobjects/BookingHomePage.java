@@ -191,7 +191,6 @@ public class BookingHomePage extends Hooks{
 	 */
 	public void checkOutDate(String checkoutDate) {
 		check_out.click();
-//		List<WebElement> rows = datepicker_table.findElements(By.tagName("tr"));
 		WebElement date = datepicker_table.findElement(By.xpath("//td[not(contains(@class,'ui-datepicker-other-month'))]/a[text()='"+ checkoutDate +"']"));
 		date.click();
 	}
