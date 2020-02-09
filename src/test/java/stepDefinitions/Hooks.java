@@ -1,16 +1,14 @@
 package stepDefinitions;
 
-import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import helpers.UiHelper;
 import helpers.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -19,71 +17,63 @@ public class Hooks {
 
     public static WebDriver driver;
 
-    public static Logger log = Logger.getLogger(String.valueOf(Hooks.class));
+    private static Logger log = Logger.getLogger(String.valueOf(Hooks.class));
 
+    private String fs = File.separator;
+
+    private static Properties configProperties;
+
+    private static String browser;
+
+
+    public Hooks() throws IOException {
+        configProperties = Utils.readPropertisFile();
+        browser = configProperties.getProperty("browser");
+    }
 
     /**
      * This will initialize the driver instance.
      */
     @Before("~@ApiTests")
-    public void openBrowser() throws IOException {
+    public void openBrowser() {
 
         log.info("Test Started");
 
-        Properties configProperties = Utils.readPropertisFile();
-
-        String browser = System.getProperty("browser");
-
-        log.info("OS Name ::: " + System.getProperty("os.name").contains("Windows"));
-
-        if (System.getProperty("os.name").contains("Windows")) {
-            if (browser == null) {
-                browser = configProperties.getProperty("browser");
-            }
+        if (getOS().contains("WINDOWS")) {
 
             switch (browser) {
+
                 case "chrome":
-                    File chromePath = new File(configProperties.getProperty("chromeDriver"));
-                    log.info("chrome path ::" + chromePath);
-                    System.setProperty("webdriver.chrome.driver", chromePath.getAbsolutePath());
+                    String winChromeDriver = "Drivers" + fs + "ChromeDriver" + fs + "chromedriver.exe";
+                    String winChromePath = Paths.get(winChromeDriver).toAbsolutePath().toString();
+                    System.setProperty("webdriver.chrome.driver", winChromePath);
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    File firefoxPath = new File(configProperties.getProperty("geckoDriver"));
-                    log.info("chrome path ::" + firefoxPath);
-                    System.setProperty("webdriver.gecko.driver", firefoxPath.getAbsolutePath());
+                    String winFirefoxDriver = "Drivers" + fs + "GeckoDriver" + fs + "geckodriver.exe";
+                    String winFirefoixPath = Paths.get(winFirefoxDriver).toAbsolutePath().toString();
+                    System.setProperty("webdriver.gecko.driver", winFirefoixPath);
                     driver = new FirefoxDriver();
                     break;
             }
-
-            log.info("Opening Browser...." + browser);
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            driver.get(configProperties.getProperty("url"));
-        }else if (System.getProperty("os.name").contains("Mac")){
-            if (browser == null) {
-                browser = configProperties.getProperty("browser");
-            }
+        }else if (getOS().contains("MAC")){
 
             switch (browser) {
                 case "chrome":
-                    File chromePath = new File(configProperties.getProperty("chromeDriver"));
-                    log.info("chrome path ::" + chromePath);
-                    System.setProperty("webdriver.chrome.driver", chromePath.getAbsolutePath());
+
+                    String macChromeDriver = "Drivers" + fs + "ChromeDriver" + fs + "chromedriver";
+                    String macChromePath = Paths.get(macChromeDriver).toAbsolutePath().toString();
+                    System.setProperty("webdriver.chrome.driver", macChromePath);
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    File firefoxPath = new File(configProperties.getProperty("geckoDriver"));
-                    log.info("chrome path ::" + firefoxPath);
-                    System.setProperty("webdriver.gecko.driver", firefoxPath.getAbsolutePath());
+                    String macFirefixDriver = "Drivers" + fs + "GeckoDriver" + fs + "geckodriver";
+                    String macFirefoxPath = Paths.get(macFirefixDriver).toAbsolutePath().toString();
+                    System.setProperty("webdriver.gecko.driver", macFirefoxPath);
                     driver = new FirefoxDriver();
                     break;
             }
-
-            log.info("Opening Browser...." + browser);
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            driver.get(configProperties.getProperty("url"));
+            initiateWebdriver();
         }
     }
 
@@ -91,10 +81,21 @@ public class Hooks {
      * This will quit the driver instance
      */
     @After("~@ApiTests")
-    public void quiteDriver(Scenario scenario) {
+    public void quitDriver() {
         driver.quit();
         log.info("Test Finished");
 
+    }
+
+    private static String getOS(){
+        return System.getProperty("os.name").toUpperCase();
+    }
+
+    private static void initiateWebdriver(){
+        log.info("Opening Browser...." + browser);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get(configProperties.getProperty("url"));
     }
 
 }
