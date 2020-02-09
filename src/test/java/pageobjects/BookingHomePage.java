@@ -9,12 +9,12 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
 import helpers.UiHelper;
 import stepDefinitions.Hooks;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class BookingHomePage extends Hooks{
-
-	private UiHelper uiHelper = new UiHelper();
 
 	public static Logger log = Logger.getLogger(String.valueOf(BookingHomePage.class));
 
@@ -53,6 +53,10 @@ public class BookingHomePage extends Hooks{
 
 	@FindBy(how= How.CSS, using="a[data-handler='next']")
 	public static WebElement datepicker_next;
+
+	public BookingHomePage() throws IOException {
+		super();
+	}
 
 	/**
 	 *

@@ -17,13 +17,13 @@ public class Hooks {
 
     public static WebDriver driver;
 
-    private static Logger log = Logger.getLogger(String.valueOf(Hooks.class));
+    public static Logger log = Logger.getLogger(String.valueOf(Hooks.class));
 
-    private String fs = File.separator;
+    public String fs = File.separator;
 
-    private static Properties configProperties;
+    public static Properties configProperties;
 
-    private static String browser;
+    public static String browser;
 
 
     public Hooks() throws IOException {
@@ -38,6 +38,8 @@ public class Hooks {
     public void openBrowser() {
 
         log.info("Test Started");
+
+        log.info("This is the browser ::: " + browser);
 
         if (getOS().contains("WINDOWS")) {
 
@@ -56,6 +58,7 @@ public class Hooks {
                     driver = new FirefoxDriver();
                     break;
             }
+            initiateWebdriver();
         }else if (getOS().contains("MAC")){
 
             switch (browser) {
@@ -87,11 +90,11 @@ public class Hooks {
 
     }
 
-    private static String getOS(){
+    public static String getOS(){
         return System.getProperty("os.name").toUpperCase();
     }
 
-    private static void initiateWebdriver(){
+    public static void initiateWebdriver(){
         log.info("Opening Browser...." + browser);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
