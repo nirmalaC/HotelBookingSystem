@@ -44,7 +44,7 @@ public class ApiHelper {
         String jsonPath = "src" + fs + "test" + fs + "resources" + fs + "jsonFiles" + fs + "Post.json";
         String path = Paths.get(jsonPath).toAbsolutePath().toString();
 
-        //JsonNode is Jackson's tree model (object graph model) for JSON. Jackson can read JSON into a JsonNode instance, and write a JsonNode out to JSON
+        //Jackson can read JSON into a JsonNode instance, and write a JsonNode out to JSON
         JsonNode obj = objectMapper.readTree(new File(path));
 
         // Update json values
