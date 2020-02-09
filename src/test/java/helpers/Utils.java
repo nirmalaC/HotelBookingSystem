@@ -1,16 +1,24 @@
 package helpers;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Utils {
+
+    public static String fs = File.separator;
+
     /**
      *This is the method to read the config.properties file
      */
     public static Properties readPropertisFile() throws IOException {
+        String path = "src" + fs + "test" + fs + "resources" + fs + "Config.properties";
+        String configPath = Paths.get(path).toAbsolutePath().toString();
+
         FileInputStream fis = null;
-        fis = new FileInputStream("./src/test/resources/Config.properties");
+        fis = new FileInputStream(configPath);
         Properties property = new Properties();
         property.load(fis);
         return property;
