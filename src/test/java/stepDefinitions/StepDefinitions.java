@@ -3,7 +3,6 @@ package stepDefinitions;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Given;
-import helpers.UiHelper;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.BookingHomePage;
 
@@ -11,7 +10,6 @@ public class StepDefinitions {
 
     private BookingHomePage page = PageFactory.initElements(BookingHomePage.driver, BookingHomePage.class);
 
-    private UiHelper uiHelper = new UiHelper();
 
     @Given("^I enter vaild details : (.*), (.*), (.*), (.*), (.*), (.*)$")
     public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate ) {

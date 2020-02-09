@@ -8,6 +8,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.parser.ParseException;
 import java.io.*;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
@@ -18,6 +19,9 @@ import static io.restassured.RestAssured.with;
 public class ApiHelper {
 
     public static Logger Log = Logger.getLogger(ApiHelper.class.getName());
+
+    public String fs = File.separator;
+
 
     /**
      *
@@ -36,8 +40,13 @@ public class ApiHelper {
         // Jackson Object mapper to parse JSON
         ObjectMapper objectMapper = new ObjectMapper();
 
+
+        String jsonPath = "src" + fs + "test" + fs + "resources" + fs + "jsonFiles" + fs + "Post.json";
+        String path = Paths.get(jsonPath).toAbsolutePath().toString();
+
         //JsonNode is Jackson's tree model (object graph model) for JSON. Jackson can read JSON into a JsonNode instance, and write a JsonNode out to JSON
-        JsonNode obj = objectMapper.readTree(new File("./src/test/resources/jsonFiles/Post.json"));
+//        JsonNode obj = objectMapper.readTree(new File("./src/test/resources/jsonFiles/Post.json"));
+        JsonNode obj = objectMapper.readTree(new File(path));
 
         // Update json values
         ((ObjectNode) obj.get("bookingdates")).put("checkin", checkindate);
