@@ -65,8 +65,7 @@ You can run the test by using test runner file:
 - Go to UiTest file and right click and click run button to run individual tests
 OR
 Run using maven commands through terminal:
-- "mvn test" This will run both api and selenium tests.
-- "mvn test -Dbrowser=browserName" This will run Selenium tests on either Chrome or Firefox based on the given browserName.
+- "mvn test -Dbrowser=browserName" This will run Selenium tests on either Chrome or Firefox based on the given browserName in the config file.
 
 Cucumber Reports :
 ------------------
