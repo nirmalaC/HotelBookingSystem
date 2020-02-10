@@ -85,7 +85,6 @@ public class ApiHelper {
             return validatableResponse;
         }
 
-
     /**
      *
      * @param URL -- Parameter used to post the data.
