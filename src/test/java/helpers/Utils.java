@@ -17,7 +17,7 @@ public class Utils {
         String path = "src" + fs + "test" + fs + "resources" + fs + "config.properties";
         String configPath = Paths.get(path).toAbsolutePath().toString();
 
-        FileInputStream fis = null;
+        FileInputStream fis;
         fis = new FileInputStream(configPath);
         Properties property = new Properties();
         property.load(fis);
