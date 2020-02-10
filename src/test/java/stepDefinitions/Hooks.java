@@ -46,13 +46,13 @@ public class Hooks {
             switch (browser) {
 
                 case "chrome":
-                    String winChromeDriver = "Drivers" + fs + "ChromeDriver" + fs + "chromedriver.exe";
+                    String winChromeDriver = "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver.exe";
                     String winChromePath = Paths.get(winChromeDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.chrome.driver", winChromePath);
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    String winFirefoxDriver = "Drivers" + fs + "GeckoDriver" + fs + "geckodriver.exe";
+                    String winFirefoxDriver = "resources" + fs + "Drivers" + fs + "GeckoDriver" + fs + "geckodriver.exe";
                     String winFirefoixPath = Paths.get(winFirefoxDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.gecko.driver", winFirefoixPath);
                     driver = new FirefoxDriver();
@@ -64,13 +64,13 @@ public class Hooks {
             switch (browser) {
                 case "chrome":
 
-                    String macChromeDriver = "Drivers" + fs + "ChromeDriver" + fs + "chromedriver";
+                    String macChromeDriver = "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver";
                     String macChromePath = Paths.get(macChromeDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.chrome.driver", macChromePath);
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    String macFirefixDriver = "Drivers" + fs + "GeckoDriver" + fs + "geckodriver";
+                    String macFirefixDriver = "resources" + fs + "Drivers" + fs + "GeckoDriver" + fs + "geckodriver";
                     String macFirefoxPath = Paths.get(macFirefixDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.gecko.driver", macFirefoxPath);
                     driver = new FirefoxDriver();
