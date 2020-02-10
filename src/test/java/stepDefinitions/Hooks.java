@@ -6,6 +6,7 @@ import helpers.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -25,7 +26,6 @@ public class Hooks {
 
     public static String browser;
 
-
     public Hooks() throws IOException {
         configProperties = Utils.readPropertiesFile();
         browser = configProperties.getProperty("browser");
@@ -39,12 +39,9 @@ public class Hooks {
 
         log.info("Test Started");
 
-        log.info("This is the browser ::: " + browser);
-
         if (getOS().contains("WINDOWS")) {
 
             switch (browser) {
-
                 case "chrome":
                     String winChromeDriver = "src" + fs + "test" + fs + "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver.exe";
                     String winChromePath = Paths.get(winChromeDriver).toAbsolutePath().toString();
@@ -59,7 +56,7 @@ public class Hooks {
                     break;
             }
             initiateWebdriver();
-        }else if (getOS().contains("MAC")){
+        } else if (getOS().contains("MAC")) {
 
             switch (browser) {
                 case "chrome":
@@ -89,11 +86,11 @@ public class Hooks {
 
     }
 
-    public static String getOS(){
+    public static String getOS() {
         return System.getProperty("os.name").toUpperCase();
     }
 
-    public static void initiateWebdriver(){
+    public static void initiateWebdriver() {
         log.info("Opening Browser...." + browser);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

@@ -26,20 +26,19 @@ public class ApiStepDefinitions {
     private ApiHelper steps = new ApiHelper();
     public String bookingId;
 
-
     @Given("^I have POST service api endpoint$")
     public void iHavePOSTServiceApiEndpoint() {
         Log.info("api POST endpoint ::: " + URL);
     }
 
     @When("^I post my booking details$")
-    public void iPostMyBookingDetails() throws IOException, ParseException {
+    public void iPostMyBookingDetails() throws IOException {
         bookingId = steps.postUserDetails(URL).extract().jsonPath().getString("bookingid");
         Log.info("Booking ID ::: " + bookingId);
     }
 
     @Then("^I should be able to create my bookings$")
-    public void iShouldBeAbleToCreateMyBookings(DataTable table) throws IOException, ParseException {
+    public void iShouldBeAbleToCreateMyBookings(DataTable table) {
 
         ValidatableResponse response = steps.getUserDetails(URL, bookingId);
 
@@ -54,19 +53,18 @@ public class ApiStepDefinitions {
             assertThat("Check the value for CheckoutDate  :: ", response.extract().response().jsonPath().getString("bookingdates.checkout"), is(equalTo(resolveDateformat(data.get("checkoutdate")))));
         }
         steps.deleteUserDetails(URL, bookingId);
-
     }
 
 
     @Given("^I have DELETE service api endpoint$")
-    public void iHaveDELETEServiceApiEndpoint() throws IOException, ParseException {
+    public void iHaveDELETEServiceApiEndpoint() throws IOException {
         Log.info("api POST endpoint ::: " + URL + "/" + bookingId);
         bookingId = steps.postUserDetails(URL).extract().jsonPath().getString("bookingid");
         Log.info("Booking ID ::: " + bookingId);
     }
 
     @When("^I delete my booking details$")
-    public void iDeleteMyBookingDetails() throws IOException, ParseException {
+    public void iDeleteMyBookingDetails() {
         steps.deleteUserDetails(URL, bookingId);
     }
 
@@ -76,7 +74,7 @@ public class ApiStepDefinitions {
         List<Integer> bookingid = response.extract().response().jsonPath().getList("bookingid");
         Log.info("List of booking id :: " + bookingid);
         for (Integer id : bookingid) {
-            Log.info("id got :: " + id );
+            Log.info("id got :: " + id);
             Assert.assertNotEquals(id.toString(), bookingId);
         }
     }

@@ -18,7 +18,6 @@ Feature: Hotel booking reservation
     And I click on the save button
     When I click on the delete button : <firstname>
     Then the saved bookings should be deleted : <firstname>, <surename>
-
     Examples:
       | firstname | surename | price | deposit | checkin_date | checkout_date |
       | Jack      | Bob      | 380   | true    | 20           | 25            |

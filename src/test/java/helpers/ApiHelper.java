@@ -22,7 +22,6 @@ public class ApiHelper {
 
     public String fs = File.separator;
 
-
     /**
      *
      * @param URL -- Parameter used to post the data.
@@ -36,10 +35,8 @@ public class ApiHelper {
         String checkoutdate = resolveDateformat("sysdate+15");
         Log.info("resolved checkindate ::: " + checkindate);
 
-
         // Jackson Object mapper to parse JSON
         ObjectMapper objectMapper = new ObjectMapper();
-
 
         String jsonPath = "src" + fs + "test" + fs + "resources" + fs + "jsonFiles" + fs + "Post.json";
         String path = Paths.get(jsonPath).toAbsolutePath().toString();
@@ -77,7 +74,6 @@ public class ApiHelper {
      */
     public ValidatableResponse getUserDetails(String URL, String bookingId) {
 
-
         ValidatableResponse validatableResponse =
                 with()
                         .baseUri(URL + "/" + bookingId)
@@ -97,7 +93,6 @@ public class ApiHelper {
      * @return -- eturns a validatableResponse which can be used by other metheds.
      */
     public ValidatableResponse deleteUserDetails(String URL, String bookingId) {
-
 
         ValidatableResponse validatableResponse =
                 with()

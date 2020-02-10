@@ -10,7 +10,6 @@ public class StepDefinitions {
 
     private BookingHomePage page = PageFactory.initElements(BookingHomePage.driver, BookingHomePage.class);
 
-
     @Given("^I enter vaild details : (.*), (.*), (.*), (.*), (.*), (.*)$")
     public void iEnterVaildDetailsFirstnameSurenamePriceDeposit(String firstname, String surename, String bookingprice, String deposit, String checinDate, String checkoutDate ) {
         page.enterDetails(firstname,surename, bookingprice, deposit, checinDate, checkoutDate);
