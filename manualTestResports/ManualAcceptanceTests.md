@@ -38,6 +38,15 @@ Feature : Hotel Booking System
   User should not be able to save checkout date lesser than checkin date
   ```
 
+  ### Defects found based on the testing done :
+  ```bash
+   1. Error message was not displayed when user tries to create a booking by providing invalid firstname, surname, price and deposit.
+   5. Error message should be displayed when user tries to create a booking by providing invalid check-in and check-out dates.
+   6. Error message was not displayed when user tries to create a booking with check-out date lesser than the check-in date
+   7. Error message was not displayed when user tries to create a booking with special character in the firstname and surname fields.
+   8. User not able to edit the created booking.
+  ```
+
 ```bash
   Scenario Outline: User successfully saves booking reservation.
   Given I entered the valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
@@ -136,16 +145,6 @@ Feature : Hotel Booking System
     Then the booking should not be saved
 ```
 
-### Report : Security est Failed
+### Report : Security test Failed
 
  ![alt text](https://user-images.githubusercontent.com/36641942/74157644-88692000-4c10-11ea-9bad-a497cdd94bde.PNG)
-
-
-```bash
- ### Defects found based on the testing done :
- 1. Error message was not displayed when user tries to create a booking by providing invalid firstname, surname, price and deposit.
- 5. Error message should be displayed when user tries to create a booking by providing invalid check-in and check-out dates.
- 6. Error message was not displayed when user tries to create a booking with check-out date lesser than the check-in date
- 7. Error message was not displayed when user tries to create a booking with special character in the firstname and surname fields.
- 8. User not able to edit the created booking.
-```
