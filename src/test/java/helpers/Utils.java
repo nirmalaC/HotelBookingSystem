@@ -13,8 +13,8 @@ public class Utils {
     /**
      *This is the method to read the config.properties file
      */
-    public static Properties readPropertisFile() throws IOException {
-        String path = "src" + fs + "test" + fs + "resources" + fs + "Config.properties";
+    public static Properties readPropertiesFile() throws IOException {
+        String path = "src" + fs + "test" + fs + "resources" + fs + "config.properties";
         String configPath = Paths.get(path).toAbsolutePath().toString();
 
         FileInputStream fis = null;

@@ -27,7 +27,7 @@ public class Hooks {
 
 
     public Hooks() throws IOException {
-        configProperties = Utils.readPropertisFile();
+        configProperties = Utils.readPropertiesFile();
         browser = configProperties.getProperty("browser");
     }
 
@@ -46,13 +46,13 @@ public class Hooks {
             switch (browser) {
 
                 case "chrome":
-                    String winChromeDriver = "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver.exe";
+                    String winChromeDriver = "src" + fs + "test" + fs + "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver.exe";
                     String winChromePath = Paths.get(winChromeDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.chrome.driver", winChromePath);
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    String winFirefoxDriver = "resources" + fs + "Drivers" + fs + "GeckoDriver" + fs + "geckodriver.exe";
+                    String winFirefoxDriver = "src" + fs + "test" + fs + "resources" + fs + "Drivers" + fs + "GeckoDriver" + fs + "geckodriver.exe";
                     String winFirefoixPath = Paths.get(winFirefoxDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.gecko.driver", winFirefoixPath);
                     driver = new FirefoxDriver();
@@ -63,14 +63,13 @@ public class Hooks {
 
             switch (browser) {
                 case "chrome":
-
-                    String macChromeDriver = "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver";
+                    String macChromeDriver = "src" + fs + "test" + fs + "resources" + fs + "Drivers" + fs + "ChromeDriver" + fs + "chromedriver";
                     String macChromePath = Paths.get(macChromeDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.chrome.driver", macChromePath);
                     driver = new ChromeDriver();
                     break;
                 case "firefox":
-                    String macFirefixDriver = "resources" + fs + "Drivers" + fs + "GeckoDriver" + fs + "geckodriver";
+                    String macFirefixDriver = "src" + fs + "test" + fs + "resources" + fs + "Drivers" + fs + "GeckoDriver" + fs + "geckodriver";
                     String macFirefoxPath = Paths.get(macFirefixDriver).toAbsolutePath().toString();
                     System.setProperty("webdriver.gecko.driver", macFirefoxPath);
                     driver = new FirefoxDriver();
@@ -97,7 +96,7 @@ public class Hooks {
     public static void initiateWebdriver(){
         log.info("Opening Browser...." + browser);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(configProperties.getProperty("url"));
     }
 

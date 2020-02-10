@@ -1,6 +1,3 @@
-# Foobar
-
-
 ## Test Automation For Hotel Booking System
 
 ### Framework Design Approach
@@ -30,8 +27,10 @@ Configure JAVA_HOME and MAVEN_HOM in the Environmental Variables : Follow the se
 
 ```bash
   HotelBookingSystem
+      |manualTestReports
+      |  |ManualAcceptance.md
       |src/test/java
-      |  |Helpers
+      |  |HelpersTests
       |  |  |ApiHelper
       |  |  |UiHelper
       |  |  |Utils
@@ -83,4 +82,3 @@ mvn test -Dcucumber.options="--tags @api" to run the api tests
 ##### API Test Results
 
 ![alt text](https://user-images.githubusercontent.com/36641942/74015565-c8b66d00-4988-11ea-9006-6f51c1500c87.png)
-](https://choosealicense.com/licenses/mit/)
