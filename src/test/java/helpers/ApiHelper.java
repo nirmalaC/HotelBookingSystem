@@ -146,8 +146,6 @@ public class ApiHelper {
                         .statusCode(200);
         return validatableResponse;
     }
-
-
 }
 
 
