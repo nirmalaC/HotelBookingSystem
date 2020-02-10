@@ -10,5 +10,6 @@ import org.junit.runner.RunWith;
         plugin = { "pretty", "html:target/api-cucumber-reports" },
         tags = {"@ApiTests", "~@FeatureAutomationTest", "~@ManualTests"}
 )
-public class RunnerApiTest {
+
+public class RuApiTest {
 }

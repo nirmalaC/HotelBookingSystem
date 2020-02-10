@@ -40,8 +40,8 @@ Configure JAVA_HOME and MAVEN_HOM in the Environmental Variables : Follow the se
       |  |  |ApiStepDefinitions
       |  |  |Hooks
       |  |  |StepDefinitions
-      |  |RunnerApiTest
-      |  |RunnerUITest
+      |  |RuApiTest
+      |  |RunUITest
       |src/test/resources
       |  |Drivers
       |  |Features

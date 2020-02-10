@@ -95,8 +95,8 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                        <include>**/java/RunnerApiTest.java</include>
-                        <include>**/java/RunnerUITest.java</include>
+                        <include>**/java/RuApiTest.java</include>
+                        <include>**/java/RunUITest.java</include>
                     </includes>
                 </configuration>
                 <executions>
