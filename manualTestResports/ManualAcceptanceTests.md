@@ -22,7 +22,8 @@ Feature : Hotel Booking System
   So that I can book my hotel reservations
 
   ## Test Scenarios coverage for both positive and negative cases.
-  Positive Cases
+
+  ### Positive Cases
   User successfully saves booking reference
   User successfully deletes a saved booking reference
 
