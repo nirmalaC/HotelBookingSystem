@@ -47,6 +47,7 @@ Feature : Hotel Booking System
    5. An error message was not displayed when a user tries to create a booking with special character in the first name and surname fields.
   ```
 
+### Acceptance Tests :
 ```bash
   Scenario Outline: User successfully saves booking reservation.
   Given I entered the valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
