@@ -10,11 +10,6 @@ import java.util.logging.Logger;
 
 public class UiHelper {
 
-    public static WebDriver driver;
-
-    public static Logger log = Logger.getLogger(String.valueOf(UiHelper.class));
-
-
     /**
      *
      * @param element This is the webelement that has to be visible on the web page.

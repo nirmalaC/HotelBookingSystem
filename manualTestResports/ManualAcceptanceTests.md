@@ -125,7 +125,7 @@ Feature : Hotel Booking System
 
   ## Security Cases
   User should not be able to save the booking (Security testing)
-  
+
 ### Below are the findings are of security testing :
 ```bash
   Scenario Outline: User should not be able to save the booking (Security testing)
