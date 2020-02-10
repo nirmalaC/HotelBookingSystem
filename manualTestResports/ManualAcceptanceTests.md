@@ -38,9 +38,6 @@ Feature : Hotel Booking System
   User should not be able to save checkout date lesser than checkin date
   ```
 
-  ### Security Cases
-  User should not be able to save the booking (Security testing)
-
 ```bash
   Scenario Outline: User successfully saves booking reservation.
   Given I entered the valid details : <first_name>, <sure_name>, <price>, <deposit>, <checkin_date>, <checkout_date>
@@ -126,6 +123,9 @@ Feature : Hotel Booking System
 
 ```
 
+  ## Security Cases
+  User should not be able to save the booking (Security testing)
+  
 ### Below are the findings are of security testing :
 ```bash
   Scenario Outline: User should not be able to save the booking (Security testing)
