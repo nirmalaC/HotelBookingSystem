@@ -40,11 +40,11 @@ Feature : Hotel Booking System
 
   ### Defects found based on the testing done :
   ```bash
-   1. Error message was not displayed when user tries to create a booking by providing invalid firstname, surname, price and deposit.
-   5. Error message should be displayed when user tries to create a booking by providing invalid check-in and check-out dates.
-   6. Error message was not displayed when user tries to create a booking with check-out date lesser than the check-in date
-   7. Error message was not displayed when user tries to create a booking with special character in the firstname and surname fields.
-   8. User not able to edit the created booking.
+   1. A user was not able to edit the created booking.
+   2. An error message was not displayed when the user tries to create a booking by providing invalid first name, surname, price and deposit amount.
+   3. An error message was not displayed when a user tries to create a booking by providing invalid check-in and check-out dates.
+   4. An error message was not displayed when a user tries to create a booking with check-out date prior to the check-in date
+   5. An error message was not displayed when a user tries to create a booking with special character in the first name and surname fields.
   ```
 
 ```bash
