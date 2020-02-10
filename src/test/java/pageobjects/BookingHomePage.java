@@ -233,7 +233,6 @@ public class BookingHomePage extends Hooks {
                 log.info("The text your are searching is not displayed in this row---->" + textDisplayed);
             }
         }
-
     }
 }
 		
