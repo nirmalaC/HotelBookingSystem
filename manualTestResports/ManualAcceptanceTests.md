@@ -24,8 +24,10 @@ Feature : Hotel Booking System
   ## Test Scenarios coverage for both positive and negative cases.
 
   ### Positive Cases
+  ```bash
   User successfully saves booking reference
   User successfully deletes a saved booking reference
+  ```
 
   ### Negative Cases
   ```bash
